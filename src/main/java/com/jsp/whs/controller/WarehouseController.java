@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jsp.whs.service.WarehouseService;
 
 @RestController
-@RequestMapping
+@RequestMapping("api/v1")
 public class WarehouseController {
 
 //	@Autowired

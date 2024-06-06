@@ -21,7 +21,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 
 @RestController
-//@RequestMapping("/api/v1")
+@RequestMapping("/api/v1")
 public class AdminController {
 	
 	 @Autowired
@@ -33,7 +33,7 @@ public class AdminController {
 					 @Content ( schema = @Schema( oneOf = ErrorStructure.class))
 			 })
 	  })
-	 @PostMapping("/admins")
+	 @PostMapping("/register")
 	public ResponseEntity<ResponseStructure<AdminResponse>> addSuperAdmin( @RequestBody  @Valid AdminRequest adminRequest){
 		return adminService.addSuperAdmin(adminRequest);
 	}
