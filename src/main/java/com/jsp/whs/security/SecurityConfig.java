@@ -20,7 +20,7 @@ public class SecurityConfig {
 	
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-		
+		//SFC help us to reset the whole config
 		return httpSecurity.csrf(csrf->csrf.disable())
 		.authorizeHttpRequests(authorize->authorize
 				.requestMatchers("api/v1/register")
