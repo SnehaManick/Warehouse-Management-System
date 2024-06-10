@@ -26,8 +26,8 @@ public class SecurityConfig {
 				.requestMatchers("api/v1/register")
 				.permitAll()
 				.anyRequest()
-				.authenticated())
-		.formLogin(Customizer.withDefaults())
+				.authenticated())//register
+		.formLogin(Customizer.withDefaults())//wat type of authentication we gonna do, it uses http session
 		.build();
 	}
 }

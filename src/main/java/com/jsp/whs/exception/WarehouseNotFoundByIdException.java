@@ -1,12 +1,10 @@
 package com.jsp.whs.exception;
 
-@SuppressWarnings("serial")
-public class SuperAdminAlreadyExistException extends RuntimeException{
-	@SuppressWarnings("unused")
+public class WarehouseNotFoundByIdException extends RuntimeException{
 	private String message;
 
-	public SuperAdminAlreadyExistException(String message) {
-	
+	public WarehouseNotFoundByIdException(String message) {
+		super();
 		this.message = message;
 	}
 
@@ -18,5 +16,5 @@ public class SuperAdminAlreadyExistException extends RuntimeException{
 //		this.message = message;
 //	}
 	
-	 
+	
 }
