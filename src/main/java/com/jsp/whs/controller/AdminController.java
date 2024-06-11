@@ -2,12 +2,14 @@ package com.jsp.whs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jsp.whs.requestdto.AdminRequest;
+import com.jsp.whs.requestdto.WarehouseRequest;
 import com.jsp.whs.responsedto.AdminResponse;
 import com.jsp.whs.service.AdminService;
 import com.jsp.whs.utility.ErrorStructure;
@@ -37,5 +39,11 @@ public class AdminController {
 	public ResponseEntity<ResponseStructure<AdminResponse>> addSuperAdmin( @RequestBody  @Valid AdminRequest adminRequest){
 		return adminService.addSuperAdmin(adminRequest);
 	}
+	  
+	  @PostMapping("warehouses/{warehouseId}/admins")
+	  public ResponseEntity<ResponseStructure<AdminResponse>> createAdmin(@RequestBody @Valid  AdminRequest adminRequest, @PathVariable int warehouseId){
+		return adminService.createAdmin(adminRequest, warehouseId);
+		  
+	  }
 
 }

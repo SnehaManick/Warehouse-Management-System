@@ -22,7 +22,7 @@ public class AppllicationExceptionHandler {
 		 List<ObjectError> errors =ex.getAllErrors();
 		 Map<String , String> allError= new HashMap<String, String>();
 		 errors.forEach( error ->{
-			 FieldError fieldError = ( FieldError)errors;
+			 FieldError fieldError = (FieldError)error;
 			 String field= fieldError.getField();
 			 String message =fieldError.getDefaultMessage();
 			 allError.put(field, message);
