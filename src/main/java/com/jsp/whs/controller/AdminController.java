@@ -40,8 +40,8 @@ public class AdminController {
 		return adminService.addSuperAdmin(adminRequest);
 	}
 	  
-	  @PostMapping("/warehouses/{warehouseId}/admins")
-	  public ResponseEntity<ResponseStructure<AdminResponse>> createAdmin(@RequestBody @Valid  AdminRequest adminRequest,@PathVariable int warehouseId){
+	  @PostMapping("warehouses/{warehouseId}/admins")
+	  public ResponseEntity<ResponseStructure<AdminResponse>> createAdmin(@RequestBody @Valid  AdminRequest adminRequest, @PathVariable int warehouseId){
 		return adminService.createAdmin(adminRequest, warehouseId);
 		  
 	  }

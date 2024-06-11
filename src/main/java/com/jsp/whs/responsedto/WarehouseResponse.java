@@ -14,19 +14,8 @@ import lombok.Setter;
 
 public class WarehouseResponse {
     private int warehouseId;
-	private String name ;
+	private String warehousename ;
+	private int totalCapacity;
 	
-//	public int warehouseId() {
-//		return warehouseId;
-//	}
-//	public String getName() {
-//		return name;
-//	}
-//
-//	public void setwarehouseId(int warehouseId) {
-//		this.warehouseId = warehouseId;
-//	}
-//	public void setName(String name) {
-//		this.name = name;
-//	}
+
 }
