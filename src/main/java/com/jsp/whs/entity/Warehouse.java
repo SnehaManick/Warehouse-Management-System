@@ -19,10 +19,7 @@ import lombok.Setter;
 @Builder
 
 public class Warehouse {
-<<<<<<< HEAD
-  private int warehouseId;
-  private String zname;
-=======
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private int warehouseId;
@@ -31,5 +28,5 @@ public class Warehouse {
 	@OneToOne
 	private Admin admin;
 
->>>>>>> 0166a88fce1c730a27a61dd3ff027df77e57b1c7
+
 }
