@@ -5,11 +5,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.jsp.whs.AdminMapper.AdminMapper;
 import com.jsp.whs.entity.Admin;
 import com.jsp.whs.enums.AdminType;
+import com.jsp.whs.exception.AdminNotFoundByEmailException;
 import com.jsp.whs.exception.SuperAdminAlreadyExistException;
 import com.jsp.whs.exception.WarehouseNotFoundByIdException;
 import com.jsp.whs.repository.AdminRepository;
@@ -18,6 +21,8 @@ import com.jsp.whs.requestdto.AdminRequest;
 import com.jsp.whs.responsedto.AdminResponse;
 import com.jsp.whs.service.AdminService;
 import com.jsp.whs.utility.ResponseStructure;
+
+import jakarta.validation.Valid;
 
 @Service
 public class AdminServiceImpl  implements AdminService {
@@ -83,9 +88,32 @@ public class AdminServiceImpl  implements AdminService {
 		              .setStatuscode(HttpStatus.CREATED.value())
 		              .setMessage("Admin added")
 		              .setData(adminMapper.mapToAdminResponse(admin)));
-
 		      
 		    }).orElseThrow( ()-> new WarehouseNotFoundByIdException("Warehouse not found "));
+	}
+
+	@Override
+	public ResponseEntity<ResponseStructure<AdminResponse>> updateAdmin(@Valid AdminRequest adminRequest) {
+		 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		 String email = auth.getName();
+		 
+		return adminRepository.findByEmail(email).map(exAdmin ->
+		 {
+//			 exAdmin.setName(adminRequest.getName());
+//			 exAdmin.setEmail(adminRequest.getEmail());
+//			 exAdmin.setPassword(adminRequest.getPassword());
+			 
+			 Admin admin = adminMapper.mapToAdmin(adminRequest, exAdmin);
+			 
+			  adminRepository.save(admin);
+			 
+			return ResponseEntity.status(HttpStatus.OK)
+					 .body(new ResponseStructure<AdminResponse>()
+						.setStatuscode(HttpStatus.OK.value())
+						.setMessage("Admin Updated")
+						.setData(adminMapper.mapToAdminResponse(admin)));
+		 }).orElseThrow(()-> new AdminNotFoundByEmailException(""));
+		
 	}
 }
 	

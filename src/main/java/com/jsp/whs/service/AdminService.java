@@ -17,4 +17,6 @@ public  interface AdminService {
 	
 	ResponseEntity<ResponseStructure<AdminResponse>> createAdmin(@Valid AdminRequest adminRequest, int warehouseId);
 
+	ResponseEntity<ResponseStructure<AdminResponse>> updateAdmin(@Valid AdminRequest adminRequest);
+
 }
