@@ -2,8 +2,10 @@ package com.jsp.whs.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,11 +41,18 @@ public class AdminController {
 	public ResponseEntity<ResponseStructure<AdminResponse>> addSuperAdmin( @RequestBody  @Valid AdminRequest adminRequest){
 		return adminService.addSuperAdmin(adminRequest);
 	}
-	  
+	  @PreAuthorize("hasAuthority('CREATE_ADMIN')")
 	  @PostMapping("warehouses/{warehouseId}/admins")
 	  public ResponseEntity<ResponseStructure<AdminResponse>> createAdmin(@RequestBody @Valid  AdminRequest adminRequest, @PathVariable int warehouseId){
-		return adminService.createAdmin(adminRequest, warehouseId);
-		  
+		return adminService.createAdmin(adminRequest, warehouseId);  
 	  }
+	  
+	 
+	  @PutMapping("/admins")
+	  public ResponseEntity<ResponseStructure<AdminResponse>> updateAdmin(@RequestBody @Valid  AdminRequest adminRequest){
+			return adminService.updateAdmin(adminRequest);  
+		  }
+	  
+	  
 
 }
