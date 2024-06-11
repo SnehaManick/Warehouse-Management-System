@@ -14,6 +14,11 @@ public interface WarehouseService {
 
 	ResponseEntity<ResponseStructure<WarehouseResponse>> createWarehouse(@Valid  WarehouseRequest warehouseRequest);
 
+	ResponseEntity<ResponseStructure<WarehouseResponse>> updateWarehouse(@Valid WarehouseRequest warehouseRequest,
+			int warehouseId);
+
+	ResponseEntity<ResponseStructure<WarehouseResponse>> findWarehouse(int warehouseId);
+
 //	String warehouse(@Valid AdminRequest adminRequest);
 
 }
