@@ -83,7 +83,6 @@ public class AdminServiceImpl  implements AdminService {
 		              .setStatuscode(HttpStatus.CREATED.value())
 		              .setMessage("Admin added")
 		              .setData(adminMapper.mapToAdminResponse(admin)));
-
 		      
 		    }).orElseThrow( ()-> new WarehouseNotFoundByIdException("Warehouse not found "));
 	}
