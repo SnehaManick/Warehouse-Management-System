@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.jsp.whs.AdminMapper.WarehouseMapper;
+import com.jsp.whs.Mapper.WarehouseMapper;
 import com.jsp.whs.entity.Warehouse;
 import com.jsp.whs.exception.WarehouseNotFoundByIdException;
 import com.jsp.whs.repository.WarehouseRepository;

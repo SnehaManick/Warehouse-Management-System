@@ -10,7 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import com.jsp.whs.AdminMapper.AdminMapper;
+import com.jsp.whs.Mapper.AdminMapper;
 import com.jsp.whs.entity.Admin;
 import com.jsp.whs.enums.AdminType;
 import com.jsp.whs.exception.AdminNotFoundByEmailException;

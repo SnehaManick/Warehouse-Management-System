@@ -1,38 +1,35 @@
 package com.jsp.whs.entity;
 
-import com.jsp.whs.enums.AdminType;
-import com.jsp.whs.enums.Privilege;
-
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 @Entity
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Admin {
-	
+public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int adminId;
-	private String name ;
-	private String email ;
-	private String password ;
 	
-	@Enumerated(EnumType.STRING)
-	private AdminType adminType;
-	
-
-	
-
+   private int addressId;
+   private String addressLine;
+   private String city;
+   private String state;
+   private String pincode;
+   private String country;
+   private String longitude;
+   private String latitude;
+   
+   @OneToOne
+   private Warehouse warehouse;
 }
