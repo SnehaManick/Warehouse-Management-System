@@ -1,5 +1,7 @@
 package com.jsp.whs.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -45,6 +47,11 @@ public class WarehouseController {
 		return ws.findWarehouse(warehouseId);
 	}
 
-
+	@PreAuthorize("hasAuthority('UPDATE_WAREHOUSE')")
+    @GetMapping("/warehouses")
+      public ResponseEntity<ResponseStructure<List<WarehouseResponse>>> findWarehouses(){
+        
+         return ws.findWarehouses();
+      }
 
 }
