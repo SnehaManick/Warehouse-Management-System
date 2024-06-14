@@ -1,5 +1,7 @@
 package com.jsp.whs.service;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 
 import com.jsp.whs.requestdto.AdminRequest;
@@ -18,6 +20,8 @@ public interface WarehouseService {
 			int warehouseId);
 
 	ResponseEntity<ResponseStructure<WarehouseResponse>> findWarehouse(int warehouseId);
+
+	ResponseEntity<ResponseStructure<List<WarehouseResponse>>> findWarehouses();
 
 //	String warehouse(@Valid AdminRequest adminRequest);
 
