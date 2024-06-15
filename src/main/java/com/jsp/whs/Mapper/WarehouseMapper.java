@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import com.jsp.whs.entity.Address;
 import com.jsp.whs.entity.Warehouse;
 import com.jsp.whs.requestdto.WarehouseRequest;
 import com.jsp.whs.responsedto.WarehouseResponse;
@@ -24,4 +25,13 @@ public class WarehouseMapper {
 	        .totalCapacity(warehouse.getTotalCapacity())
 	        .build();
 	  }
+	  @Autowired
+		private AddressMapper addressMapper;
+		
+		public WarehouseResponse mapToWareHouseAddress(Warehouse warehouse, Address address) {
+			WarehouseResponse response = mapToWarehouseResponse(warehouse);
+			response.setAddressResponse(addressMapper.mapToAddressResponse(address));
+			
+			return response;
+		}
 }

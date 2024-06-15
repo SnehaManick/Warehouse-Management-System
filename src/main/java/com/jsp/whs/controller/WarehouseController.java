@@ -53,5 +53,13 @@ public class WarehouseController {
         
          return ws.findWarehouses();
       }
+	
+	@PreAuthorize("hasAuthority('CREATE_WAREHOUSE')")
+    @GetMapping("/cities/{city}/warehouses")
+      public ResponseEntity<ResponseStructure<List<WarehouseResponse>>> findWarehousesByCity(@PathVariable String city){
+        
+         return ws.findWarehousesByCity(city);
+      }
 
+	
 }
