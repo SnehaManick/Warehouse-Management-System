@@ -25,7 +25,7 @@ public class SecurityConfig {
 		//SFC help us to reset the whole config
 		return httpSecurity.csrf(csrf->csrf.disable())
 		.authorizeHttpRequests(authorize->authorize
-				.requestMatchers("api/v1/register")
+				.requestMatchers("/api/v1/register","/api/v1/clients")
 				.permitAll()
 				.anyRequest()
 				.authenticated())//register

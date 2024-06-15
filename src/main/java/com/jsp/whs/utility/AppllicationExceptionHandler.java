@@ -33,9 +33,9 @@ public class AppllicationExceptionHandler {
 						 .setMesssage("invalid input")
 						 .setRoutcase(allError));
 				 
-		 
 	}
 	  
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ResponseEntity<ErrorStructure<String>> errorResponse  ( HttpStatus status , String message , String routcase){
 		 return  ResponseEntity.status(status).body(new ErrorStructure()
 				 .setMesssage(message)

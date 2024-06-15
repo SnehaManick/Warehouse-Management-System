@@ -6,18 +6,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
-public class WarehouseResponse {
-    private int warehouseId;
-	private String warehousename ;
-	private int totalCapacity;
-	
-	private AddressResponse addressResponse;
-	
+public class ApiKeyResponse {
+	private String apiKey;
+	private String message;
 
 }

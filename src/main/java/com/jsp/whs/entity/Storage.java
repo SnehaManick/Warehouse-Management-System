@@ -36,7 +36,7 @@ public class Storage {
 	private double lengthInMeters;
 	private double breadthInMeters;
 	private double heightInMeters;
-	private double capacityInWeight;
+	private int capacityInWeight;
 	@Enumerated(EnumType.STRING)
 	List<MaterialType> materialTypes;
 	private double maxAdditionalWeight;
